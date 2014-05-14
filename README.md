@@ -20,4 +20,8 @@ The module **does not** lock any files and **does not** create any “lock 
 
 ## License
 
-MIT license (see the `LICENSE` file).
+MIT license (see the `LICENSE` file), with the following exceptions:
+
+* The file `test/nodelist.txt` contains FidoNet Nodelist for Friday, May 2, 2014. It is used according to the permissions given in its prologue: its use is granted for the purpose of communication (and this Node.js module is developed for that purpose). However, this nodelist is **outdated** and thus it should be used **for testing purposes only:** you **must** get a newer nodelist for the purposes of communication within FidoNet.
+
+* The file `test/nodelist.zip` contains the same nodelist, but ZIP-packed. The same restrictions apply.
