@@ -7,7 +7,7 @@ var nodelist = function(nodelistPath){
       encoding: 'utf8'
    });
    if( nodelistString.slice(-1) === '\x1A' ){ // EOF
-      nodelistString = nodelistString.slice(-1);
+      nodelistString = nodelistString.slice(0, -1);
    }
    var nodelistLines = nodelistString.split( /\x0d?\x0a/ );
    nodelistString = null;
