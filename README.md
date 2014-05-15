@@ -20,6 +20,8 @@ The module **does not** lock any files and **does not** create any “lock 
 
 ## Testing Fidonet nodelist reader
 
+[![(build testing status)](https://travis-ci.org/Mithgol/node-fidonet-nodelist.svg?branch=master)](https://travis-ci.org/Mithgol/node-fidonet-nodelist)
+
 The tests currently contain ≈367 kilobytes of nodelist data and thus are not included in the npm package of the module. Use the version from GitHub.
 
 It is necessary to install [Mocha](http://visionmedia.github.io/mocha/) and [JSHint](http://jshint.com/) for testing.
