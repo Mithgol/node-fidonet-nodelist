@@ -12,13 +12,7 @@ var nodelist = function(nodelistPath){
    var nodelistLines = nodelistString.split( /\x0d?\x0a/ );
    nodelistString = null;
 
-   var currentZone    = null;
-   var currentRegion  = null;
-   var currentNet     = null;
-   var currentHub     = null;
-   nodelistLines.forEach(function(line){
-      var fields = line.split(',');
-   });
+   this.nodelistLines = nodelistLines;
 };
 
 module.exports = nodelist;
