@@ -1,6 +1,6 @@
 The **Fidonet nodelist reader** module is able to read descriptions of Fidonet nodes from a Fidonet nodelist file.
 
-The module is written in JavaScript and requires [Node.js](http://nodejs.org/) to run.
+The module is written in JavaScript and requires [Node.js](http://nodejs.org/) (version 0.10 or newer) to run.
 
 ## Installing Fidonet nodelist reader
 
