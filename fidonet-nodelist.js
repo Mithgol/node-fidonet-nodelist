@@ -12,7 +12,9 @@ var nodelist = function(nodelistPath){
    var nodelistLines = nodelistString.split( /\x0d?\x0a/ );
    nodelistString = null;
 
-   this.nodelistLines = nodelistLines;
+   this.nodelistLines = nodelistLines.filter(function(line){
+      return line.length > 0 && line.indexOf(';') !== 0;
+   });
 };
 
 module.exports = nodelist;
