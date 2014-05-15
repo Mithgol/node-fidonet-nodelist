@@ -1,7 +1,7 @@
 {
 "name": "nodelist",
 "main": "fidonet-nodelist.js",
-"version": "0.0.1",
+"version": "0.0.2",
 "description": "Fidonet nodelist parser for Node.js",
 "keywords": ["Fidonet", "Fido", "nodelist"],
 "author": { "name": "Mithgol the Webmaster" },
