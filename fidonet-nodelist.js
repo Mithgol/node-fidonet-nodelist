@@ -18,7 +18,7 @@ var nodelist = function(nodelistPath){
    });
 };
 
-nodelist.prototype.getLineForNode = function(node){
+nodelist.prototype.getLineForAddr = function(node){
    node = '' + node;
 
    var matches = /^(\d+):(\d+)\/(\d+)$/.exec(node);

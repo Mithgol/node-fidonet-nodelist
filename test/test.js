@@ -38,57 +38,57 @@ describe('Fidonet nodelist reader', function(){
    });
 
    it("can find the line of Zone 2 by number", function(){
-      var line = nodelist.getLineForNode('2:2/0');
+      var line = nodelist.getLineForAddr('2:2/0');
       assert.equal(line, lineZone2);
    });
 
    it("can't find the line of Zone 7 by number", function(){
-      var line = nodelist.getLineForNode('7:7/0');
+      var line = nodelist.getLineForAddr('7:7/0');
       assert.strictEqual(line, null);
    });
 
    it("can find the line of Region 2:50 by number", function(){
-      var line = nodelist.getLineForNode('2:50/0');
+      var line = nodelist.getLineForAddr('2:50/0');
       assert.equal(line, lineZone2Reg50);
    });
 
    it("can't find the line of Region 2:999 by number", function(){
-      var line = nodelist.getLineForNode('2:999/0');
+      var line = nodelist.getLineForAddr('2:999/0');
       assert.strictEqual(line, null);
    });
 
    it("can't find the line of Region 1:50 by number", function(){
-      var line = nodelist.getLineForNode('1:50/0');
+      var line = nodelist.getLineForAddr('1:50/0');
       assert.strictEqual(line, null);
    });
 
    it("can't find the line of Region 3:50 by number", function(){
-      var line = nodelist.getLineForNode('3:50/0');
+      var line = nodelist.getLineForAddr('3:50/0');
       assert.strictEqual(line, null);
    });
 
    it("can find the line of Net 2:5063 by number", function(){
-      var line = nodelist.getLineForNode('2:5063/0');
+      var line = nodelist.getLineForAddr('2:5063/0');
       assert.equal(line, lineZone2Net5063);
    });
 
    it("can't find the line of Net 1:5063 by number", function(){
-      var line = nodelist.getLineForNode('1:5063/0');
+      var line = nodelist.getLineForAddr('1:5063/0');
       assert.strictEqual(line, null);
    });
 
    it("can find the line of Node 2:50/88 by number", function(){
-      var line = nodelist.getLineForNode('2:50/88');
+      var line = nodelist.getLineForAddr('2:50/88');
       assert.equal(line, testLine);
    });
 
    it("can find the line of Node 2:5063/88 by number", function(){
-      var line = nodelist.getLineForNode('2:5063/88');
+      var line = nodelist.getLineForAddr('2:5063/88');
       assert.equal(line, testLine2);
    });
 
    it("can't find the line of Node 1:5063/88 by number", function(){
-      var line = nodelist.getLineForNode('1:5063/88');
+      var line = nodelist.getLineForAddr('1:5063/88');
       assert.strictEqual(line, null);
    });
 });
