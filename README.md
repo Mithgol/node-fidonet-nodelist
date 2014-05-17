@@ -16,12 +16,26 @@ You may visit https://github.com/Mithgol/node-fidonet-nodelist#readme occasional
 
 ## Using Fidonet nodelist reader
 
-When you `require()` the installed module, you get a constructor that uses the path to a nodelist file as its parameter:
+When you `require()` the installed module, you get a constructor that uses the path to a nodelist file as its first parameter (the second parameter is an object of options, and it is optional):
 
 ```js
 var nodelistReader = require('nodelist');
-var nodelist = nodelistReader(nodelistPath);
+var nodelist = nodelistReader(nodelistPath, options);
 ```
+
+The following nodelist file formats are supported:
+
+* The Distribution Nodelist (as specified in [FTS-5000.002](http://ftsc.org/docs/fts-5000.002)).
+
+* ZIP archive of the Distribution Nodelist (where the nodelist is the only file and resides in the archive's root). You **must** set `options.zip` to `true` when you read a ZIP-packed nodelist. Example:
+
+```js
+var nodelist = require('nodelist')( path.join(__dirname, 'nodelist.zip'), {
+   zip: true
+});
+```
+
+The constructor throws exceptions when I/O errors or ZIP CRC32 errors happen.
 
 The constructed object has the property `nodelistLines` (an array) where the read lines of the nodelist are stored (except empty lines and comments).
 
