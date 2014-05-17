@@ -27,7 +27,7 @@ The following nodelist file formats are supported:
 
 * The Distribution Nodelist (as specified in [FTS-5000.002](http://ftsc.org/docs/fts-5000.002)) in a plain text file. Both `'\r\n'` (`'\x0D\x0A'`) and `'\n'` (`'\x0A'`) line endings are supported (the latter violates FTS-5000 but it still can be encountered in nodelists on some UN*X systems).
 
-* ZIP archive of such Distribution Nodelist. To prevent the possible mistakes, the nodelist has to be the only file and to reside in the archive's root (otherwise an exception is thrown). You also **must** set `options.zip` to `true` when (and only when) you read a ZIP-packed nodelist. Example:
+* ZIP archive of such Distribution Nodelist. To prevent some possible mistakes, the nodelist has to be the only file and to reside in the archive's root (otherwise an exception is thrown). You also **must** set `options.zip` to `true` when (and only when) you read a ZIP-packed nodelist. Example:
 
 ```js
 var nodelist = require('nodelist')( path.join(__dirname, 'nodelist.zip'), {
