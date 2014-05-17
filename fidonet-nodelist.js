@@ -66,6 +66,37 @@ nodelist.prototype.getLineForNode = function(node){
       // region or net mode
       return this.nodelistLines[idxRegNet];
    }
+
+   var idxRegNetNext = this.nodelistLines.findIndex(function(line, idx){
+      // `this.prevIDX` contains index of the previous region or net
+      if( idx <= this.prevIDX ) return false;
+      // `this.nextIDX` contains index of the next zone
+      if( idx >= this.nextIDX ) return false;
+      // `this.reRegNet` contains regex
+      return this.reRegNet.test(line);
+   }, {
+      prevIDX: idxRegNet,
+      nextIDX: idxZoneNext,
+      reRegNet: /^(?:Region|Host),/
+   });
+   if( idxRegNetNext < 0 ) idxRegNetNext = idxZoneNext;
+
+   var reNode = RegExp('^(?:Pvt|Hold|Down|Hub)?,' + matches[3] + ',');
+   var idxNode = this.nodelistLines.findIndex(function(line, idx){
+      // `this.prevIDX` contains index of the previous region or net
+      if( idx <= this.prevIDX ) return false;
+      // `this.nextIDX` contains index of the next region or net
+      if( idx >= this.nextIDX ) return false;
+      // `this.reNode` contains regex
+      return this.reNode.test(line);
+   }, {
+      prevIDX: idxRegNet,
+      nextIDX: idxRegNetNext,
+      reNode:  reNode
+   });
+   if( idxNode < 0 ) return null;
+
+   return this.nodelistLines[idxNode];
 };
 
 module.exports = nodelist;

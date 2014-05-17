@@ -71,4 +71,24 @@ describe('Fidonet nodelist reader', function(){
       var line = nodelist.getLineForNode('2:5063/0');
       assert.equal(line, lineZone2Net5063);
    });
+
+   it("can't find the line of Net 1:5063 by number", function(){
+      var line = nodelist.getLineForNode('1:5063/0');
+      assert.strictEqual(line, null);
+   });
+
+   it("can find the line of Node 2:50/88 by number", function(){
+      var line = nodelist.getLineForNode('2:50/88');
+      assert.equal(line, testLine);
+   });
+
+   it("can find the line of Node 2:5063/88 by number", function(){
+      var line = nodelist.getLineForNode('2:5063/88');
+      assert.equal(line, testLine2);
+   });
+
+   it("can't find the line of Node 1:5063/88 by number", function(){
+      var line = nodelist.getLineForNode('1:5063/88');
+      assert.strictEqual(line, null);
+   });
 });
