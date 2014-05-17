@@ -43,9 +43,9 @@ The constructed object has the following method:
 
 ### getLineForAddr(address)
 
-Returns a nodelist's line that corresponds to the given `address` string (returns `null` if the address cannot be found).
+Returns a nodelist's line (string) that corresponds to the given `address` (string); however, returns `null` if the given address cannot be found.
 
-The `address` is given in the usual Fidonet format (three numbers separated by a colon and a slash; for example, `2:5063/88`). In an address of a region or of a net the third number is a zero (for example, `2:50/0` for R50 region or `2:5063/0` for the net N5063); the same zero is used in an address of a zone, where also the second number is equal to the first (for example, `1:1/0` for Z1, `2:2/0` for Z2, etc.). The numbers must be given exactly as in the nodelist (for example, no leading zeroes).
+The `address` is given in the usual Fidonet format (three numbers separated by a colon and a slash; for example, `'2:5063/88'`). In an address of a region or of a net the third number is a zero (for example, `'2:50/0'` for R50 region or `'2:5063/0'` for the net N5063); the same zero is used in an address of a zone, where also the second number is equal to the first (for example, `'1:1/0'` for Z1, `'2:2/0'` for Z2, etc.). The numbers must be given exactly as in the nodelist (for example, no leading zeroes).
 
 ## Locking files
 
