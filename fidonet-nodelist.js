@@ -18,10 +18,10 @@ var nodelist = function(nodelistPath){
    });
 };
 
-nodelist.prototype.getLineForAddr = function(node){
-   node = '' + node;
+nodelist.prototype.getLineForAddr = function(address){
+   address = '' + address;
 
-   var matches = /^(\d+):(\d+)\/(\d+)$/.exec(node);
+   var matches = /^(\d+):(\d+)\/(\d+)$/.exec(address);
    if( matches === null ) return null;
 
    var reZone = RegExp('^Zone,' + matches[1] + ',');
