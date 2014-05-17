@@ -39,11 +39,11 @@ nodelist.prototype.getLineForNode = function(node){
    var idxZoneNext = this.nodelistLines.findIndex(function(line, idx){
       // `this.prevIDX` contains index of the previous zone
       if( idx <= this.prevIDX ) return false;
-      // `this.reZone` contains regex
-      return this.reZone.test(line);
+      // `this.strZone` contains starting string
+      return line.indexOf(this.strZone) === 0;
    }, {
       prevIDX: idxZone,
-      reZone: /^Zone,/
+      strZone: 'Zone,'
    });
    if( idxZoneNext < 0 ) idxZoneNext = this.nodelistLines.length;
 
@@ -66,7 +66,6 @@ nodelist.prototype.getLineForNode = function(node){
       // region or net mode
       return this.nodelistLines[idxRegNet];
    }
-
 };
 
 module.exports = nodelist;
