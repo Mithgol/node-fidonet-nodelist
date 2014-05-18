@@ -69,6 +69,10 @@ Same as `.getLineForAddr`, but instead of a raw string returns an object with
 
 Like `.getLineForAddr`, this method returns `null` if the given address cannot be found. Unlike `.getLineForAddr`, this method also returns `null` if the found line in the nodelist contains less than seven fields required by FTSC standards.
 
+## Example
+
+![(screenshot)](https://cloud.githubusercontent.com/assets/1088720/3007815/146668d6-dea0-11e3-8a9b-11c32d7926c2.gif)
+
 ## Locking files
 
 The module **does not** lock any files and **does not** create any “lock files” (flag files, semaphore files). The module's caller should control the access to the nodelist.
