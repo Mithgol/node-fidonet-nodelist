@@ -125,6 +125,42 @@ nodelist.prototype.getLineForAddr = function(address){
    return this.nodelistLines[idxNode];
 };
 
+nodelist.prototype.getFieldsForAddr = function(address){
+   var nodelistLine = this.getLineForAddr(address);
+   if( nodelistLine === null ) return null;
+
+   var lineFields = nodelistLine.split(',');
+   nodelistLine = void 0;
+   if( lineFields.length < 7 ) return null;
+
+   var fields = {};
+   fields.keyword     = lineFields.shift();
+   fields.nodeNumber  = lineFields.shift();
+   fields.nodeName    = lineFields.shift().replace(/_/g, ' ');
+   fields.location    = lineFields.shift().replace(/_/g, ' ');
+   fields.sysopName   = lineFields.shift().replace(/_/g, ' ');
+   fields.phoneNumber = lineFields.shift();
+   fields.speed       = lineFields.shift();
+   fields.normalFlags = [];
+   fields.userFlags   = [];
+
+   var fillingNormalFlags = true;
+   lineFields.forEach(function(nextField){
+      if( fillingNormalFlags && nextField.indexOf('U') === 0 ){
+         fillingNormalFlags = false;
+         if( nextField.length <= 1 ) return;
+         nextField = nextField.slice(1);
+      }
+      if( fillingNormalFlags ){
+         fields.normalFlags.push(nextField);
+         return;
+      }
+      fields.userFlags.push(nextField);
+   });
+
+   return fields;
+};
+
 nodelist.prototype.errors = {
    NO_FILES_IN_ZIP:  "The nodelist's ZIP archive must contain a file!",
    MANY_FILES_IN_ZIP:"The nodelist's ZIP archive must contain only one file!",

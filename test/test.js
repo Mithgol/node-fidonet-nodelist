@@ -9,6 +9,22 @@ var testLine2 = ',88,FGHI_Global_Headlight_Ignited,Gelendzhik,' +
                 'Sergey_Sokoloff,00-00-000000,300,IBN:1978,' +
                 'INA:Fidonet.Mithgol.Ru,U,TSU';
 
+var fieldsZone2Reg50Node88 = {
+   keyword:     '',
+   nodeNumber:  '88',
+   nodeName:    'FGHI Global Headlight Ignited',
+   location:    'Gelendzhik',
+   sysopName:   'Sergey Sokoloff',
+   phoneNumber: '-Unpublished-',
+   speed:       '300',
+   normalFlags: [
+      'IBN:1978',
+      'INA:Fidonet.Mithgol.Ru',
+      'TSU'
+   ],
+   userFlags: []
+};
+
 var lineZone2 = 'Zone,2,Eur_(122),B,Ward_Dossche,32-3-4480880,33600,V34,' +
                 'VFC,ICM,XX,IEM,ITX,IBN,TXH';
 var lineZone2Reg50 = 'Region,50,Russia,Moscow,Alex_Barinov,-Unpublished-,' +
@@ -122,6 +138,14 @@ describe('Fidonet nodelist reader', function(){
       assert.equal(line, testLine);
    });
 
+   it("can find the fields of Node 2:50/88 by number", function(){
+      var fields;
+      fields = nodelist.getFieldsForAddr('2:50/88');
+      assert.deepEqual(fields, fieldsZone2Reg50Node88);
+      fields = nodelistZIP.getFieldsForAddr('2:50/88');
+      assert.deepEqual(fields, fieldsZone2Reg50Node88);
+   });
+
    it("can find the line of Node 2:5063/88 by number", function(){
       var line;
       line = nodelist.getLineForAddr('2:5063/88');
@@ -136,5 +160,13 @@ describe('Fidonet nodelist reader', function(){
       assert.strictEqual(line, null);
       line = nodelistZIP.getLineForAddr('1:5063/88');
       assert.strictEqual(line, null);
+   });
+
+   it("can't find the fields of Node 3:50/88 by number", function(){
+      var fields;
+      fields = nodelist.getFieldsForAddr('3:50/88');
+      assert.strictEqual(fields, null);
+      fields = nodelistZIP.getFieldsForAddr('3:50/88');
+      assert.strictEqual(fields, null);
    });
 });

@@ -1,4 +1,4 @@
-The **Fidonet nodelist reader** module is able to read descriptions of Fidonet nodes from a Fidonet nodelist file according to the [FTS-5000.002](http://ftsc.org/docs/fts-5000.002) standard.
+The **Fidonet nodelist reader** module is able to read descriptions of Fidonet nodes from a Fidonet nodelist file according to the [FTS-5000.002](http://ftsc.org/docs/fts-5000.002) and [FTS-5001.002](http://ftsc.org/docs/fts-5001.002) standards.
 
 The module is written in JavaScript and requires [Node.js](http://nodejs.org/) (version 0.10 or newer) to run.
 
@@ -55,17 +55,19 @@ Same as `.getLineForAddr`, but instead of a raw string returns an object with
 
 * `nodeNumber`: the value of this property corresponds to the **second** field of the line. This property is useless (the `address` parameter already contains the necessary information) and is filled only for the sake of completeness of the returned object.
 
-* `nodeName`: the value of this property corresponds to the **third** field of the line. The name by which the system is known.
+* `nodeName`: the value of this property corresponds to the **third** field of the line. The name by which the system is known. Each underscore (`'_'`) is replaced with a whitespace character in this value (because whitespaces are not permitted in the nodelist and thus they are usually replaced with underscores in this field).
 
-* `location`: the value of this property corresponds to the **fourth** field of the line. The physical location of the node (town, suburb, city, etc.).
+* `location`: the value of this property corresponds to the **fourth** field of the line. The physical location of the node (town, suburb, city, etc.). Each underscore (`'_'`) is replaced with a whitespace character in this value (because whitespaces are not permitted in the nodelist and thus they are usually replaced with underscores in this field).
 
-* `sysopName`: the value of this property corresponds to the **fifth** field of the line. The name of the Fidonet member responsible for the node.
+* `sysopName`: the value of this property corresponds to the **fifth** field of the line. The name of the Fidonet member responsible for the node. Each underscore (`'_'`) is replaced with a whitespace character in this value (because whitespaces are not permitted in the nodelist and thus they are usually replaced with underscores in this field).
 
 * `phoneNumber`: the value of this property corresponds to the **sixth** field of the line. PSTN (or ISDN) phone number, or the exact string `'-Unpublished-'`.
 
 * `speed`: the value of this property corresponds to the **seventh** field of the line. In the past, this field was used to show the maximum modem speed supported by the node, but has since been obsoleted in favour of the more accurate modem flags.
 
 * `normalFlags` and `userFlags`: two arrays of strings that correspond to the values of normal flags and user flags encountered after the **seventh** field of the line (in order of appearance). The flags are optional, and thus one or both of these two arays may be empty. See [FTS-5001.002](http://ftsc.org/docs/fts-5001.002) for details.
+
+Like `.getLineForAddr`, this method returns `null` if the given address cannot be found. Unlike `.getLineForAddr`, this method also returns `null` if the found line in the nodelist contains less than seven fields required by FTSC standards.
 
 ## Locking files
 
