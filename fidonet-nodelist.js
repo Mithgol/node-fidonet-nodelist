@@ -1,6 +1,7 @@
 require('array.prototype.findindex');
 var fs = require('fs');
-var extend = require('util')._extend;
+var path = require('path');
+var extend = require('extend');
 var JSZip  = require('jszip');
 
 var nodelistDefaults = {
@@ -11,7 +12,31 @@ var nodelist = function(nodelistPath, nodelistOptions){
    if (!(this instanceof nodelist)){
       return new nodelist(nodelistPath, nodelistOptions);
    }
-   var options = extend(nodelistDefaults, nodelistOptions);
+   var options = extend({}, nodelistDefaults, nodelistOptions);
+
+   if( nodelistPath.slice(-1) === '*' ){ // wildcard mode
+      var dirname = path.dirname(nodelistPath);
+      var basename = path.basename(nodelistPath).slice(0, -1);
+
+      var dir = fs.readdirSync(dirname).map(function(dirEntry){
+         if( dirEntry.indexOf(basename) !== 0 ) return null;
+
+         var fullPath = path.join(dirname, dirEntry);
+         var stats = fs.statSync(fullPath);
+         if(!( stats.isFile() )) return null;
+
+         return fullPath;
+      }).filter(function(dirEntry){
+         return dirEntry !== null;
+      }).sort(function(fullPath1, fullPath2){
+         var stat1 = fs.statSync(fullPath1);
+         var stat2 = fs.statSync(fullPath2);
+         return stat1.ctime.getTime() - stat2.ctime.getTime();
+      }).reverse();
+
+      if( dir.length < 1 ) throw new Error(this.errors.NO_MATCHING_FILES);
+      nodelistPath = dir[0];
+   }
 
    var nodelistString;
    if( options.zip ){
@@ -164,7 +189,8 @@ nodelist.prototype.getFieldsForAddr = function(address){
 nodelist.prototype.errors = {
    NO_FILES_IN_ZIP:  "The nodelist's ZIP archive must contain a file!",
    MANY_FILES_IN_ZIP:"The nodelist's ZIP archive must contain only one file!",
-   UNKNOWN_ZIP_COMPRESSION: "Unknown ZIP compression type!"
+   UNKNOWN_ZIP_COMPRESSION: "Unknown ZIP compression type!",
+   NO_MATCHING_FILES: "No files matching the given wildcard!"
 };
 
 module.exports = nodelist;

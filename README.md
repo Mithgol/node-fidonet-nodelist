@@ -35,6 +35,8 @@ var nodelist = require('nodelist')( path.join(__dirname, 'nodelist.zip'), {
 });
 ```
 
+If the given `nodelistPath` ends with an asterisk (`*`), it acts as a wildcard. The most recent of the files matching that wildcard is used.
+
 The constructor throws exceptions when I/O errors or ZIP CRC32 errors happen.
 
 The constructed object has the property `nodelistLines` (an array) where the read lines of the nodelist are stored (except empty lines and comments).

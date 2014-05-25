@@ -51,6 +51,18 @@ describe('Fidonet nodelist reader', function(){
       assert(nodelistZIP.nodelistLines.length > 0);
    });
 
+   it('nodelists are found by wildcards as well', function(){
+      var nodelistBleep = require('../')(
+         path.join(__dirname, 'nodelist.t*')
+      );
+      var nodelistZIPBleep = require('../')(
+         path.join(__dirname, 'nodelist.z*'),
+         { zip: true }
+      );
+      assert.deepEqual(nodelist, nodelistBleep);
+      assert.deepEqual(nodelistZIP, nodelistZIPBleep);
+   });
+
    it('the "FGHI Global Headlight Ignited" node can be read', function(){
       idx = nodelist.nodelistLines.indexOf(testLine);
       assert.notEqual(idx, -1);
