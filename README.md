@@ -87,11 +87,11 @@ The tests currently contain ≈367 kilobytes of nodelist data and thus are no
 
 It is necessary to install [Mocha](http://visionmedia.github.io/mocha/) and [JSHint](http://jshint.com/) for testing.
 
-* You may install Mocha globally (`npm install mocha -g`) or locally (`npm install mocha` in the directory of the Fidonet reader module).
+* You may install Mocha globally (`npm install mocha -g`) or locally (`npm install mocha` in the directory of the Fidonet nodelist reader module).
 
-* You may install JSHint globally (`npm install jshint -g`) or locally (`npm install jshint` in the directory of the Fidonet reader module).
+* You may install JSHint globally (`npm install jshint -g`) or locally (`npm install jshint` in the directory of the Fidonet nodelist reader module).
 
-After that you may run `npm test` (in the directory of the Fidonet reader module).
+After that you may run `npm test` (in the directory of the Fidonet nodelist reader module).
 
 ## License
 
