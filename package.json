@@ -1,10 +1,11 @@
 {
 "name": "nodelist",
 "main": "fidonet-nodelist.js",
-"version": "1.1.0",
+"version": "1.1.1",
 "description": "Fidonet nodelist parser for Node.js",
 "keywords": ["Fidonet", "Fido", "nodelist"],
 "author": { "name": "Mithgol the Webmaster" },
+"license": "MIT",
 "repository": {
    "type": "git",
    "url": "https://github.com/Mithgol/node-fidonet-nodelist.git"
