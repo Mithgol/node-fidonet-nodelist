@@ -1,7 +1,7 @@
 {
 "name": "nodelist",
 "main": "fidonet-nodelist.js",
-"version": "1.1.4",
+"version": "1.1.5",
 "description": "Fidonet nodelist parser for Node.js",
 "keywords": ["Fidonet", "Fido", "nodelist"],
 "author": { "name": "Mithgol the Webmaster" },
@@ -13,7 +13,7 @@
 "dependencies": {
    "array.prototype.findindex": "~1.0.0",
    "extend": "~2.0.0",
-   "jszip": "~2.4.0"
+   "jszip": "~2.5.0"
 },
 "scripts": {
    "pretest": "jshint fidonet-nodelist.js test/",
