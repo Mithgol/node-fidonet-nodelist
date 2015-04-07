@@ -1,10 +1,12 @@
+[![(a histogram of downloads)](https://nodei.co/npm-dl/nodelist.png?height=3)](https://npmjs.org/package/nodelist)
+
 The **Fidonet nodelist reader** module is able to read descriptions of Fidonet nodes from a Fidonet nodelist file according to the [FTS-5000.002](http://ftsc.org/docs/fts-5000.002) and [FTS-5001.002](http://ftsc.org/docs/fts-5001.002) standards.
 
 This module is written in JavaScript and requires [Node.js](http://nodejs.org/) to run. (Node.js version 0.10.x or 0.12.x is recommended. The latest stable [io.js](https://iojs.org/) is fine too.)
 
 ## Installing Fidonet nodelist reader
 
-[![(npm package version)](https://nodei.co/npm/nodelist.png?downloads=true)](https://npmjs.org/package/nodelist)
+[![(npm package version)](https://nodei.co/npm/nodelist.png?downloads=true&downloadRank=true)](https://npmjs.org/package/nodelist)
 
 * Latest packaged version: `npm install nodelist`
 
