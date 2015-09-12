@@ -1,4 +1,3 @@
-require('array.prototype.findindex');
 var fs = require('fs');
 var path = require('path');
 var extend = require('extend');
