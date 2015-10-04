@@ -25,9 +25,9 @@ var nodelist = function(nodelistPath, nodelistOptions){
          if(!( stats.isFile() )) return null;
 
          return fullPath;
-      }).filter(function(dirEntry){
-         return dirEntry !== null;
-      }).sort(function(fullPath1, fullPath2){
+      }).filter(
+         dirEntry => dirEntry !== null
+      ).sort(function(fullPath1, fullPath2){
          var stat1 = fs.statSync(fullPath1);
          var stat2 = fs.statSync(fullPath2);
          return stat1.ctime.getTime() - stat2.ctime.getTime();
@@ -62,10 +62,10 @@ var nodelist = function(nodelistPath, nodelistOptions){
    var nodelistLines = nodelistString.split( /\x0d?\x0a/ );
    nodelistString = null;
 
-   this.nodelistLines = nodelistLines.filter(function(line){
+   this.nodelistLines = nodelistLines.filter(
       // drop empty lines, drop comment lines
-      return line.length > 0 && line.indexOf(';') !== 0;
-   });
+      line => line.length > 0 && line.indexOf(';') !== 0
+   );
 };
 
 nodelist.prototype.getLineForAddr = function(address){
